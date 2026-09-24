@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employees</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="sidebar">
+
+            <h2>Attendance System</h2>
+
+                <a href="{{ url_for('main') }}">Dashboard</a>
+                <a href="{{ url_for('employees') }}">Employees</a>
+                <a href="{{ url_for('attendance') }}">Attendance</a>
+                <a href="{{ url_for('clock_attendance') }}">Clock Attendance</a>
+                <a href="#">Reports</a>
+
+        </div>
+
+        <div class="main-content">
+
+            <h1>Employees</h1>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+
+                <input
+                    type="text"
+                    name="employee_id"
+                    placeholder="Employee ID"
+                >
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                >
+
+                <input
+                    type="text"
+                    name="department"
+                    placeholder="Department"
+                >
+
+                <button type="submit">Add Employee</button>
+
+            </form>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for employee in employees %}
+
+                    <tr>
+
+                        <td>{{ employee[0] }}</td>
+                        <td>{{ employee[1] }}</td>
+                        <td>{{ employee[2] }}</td>
+
+                        <td>
+
+                            <a href="{{ url_for('edit_employee', employee_id=employee[0]) }}">
+                                Edit
+                            </a>
+
+                            <a href="{{ url_for('delete_employee', employee_id=employee[0]) }}">
+                                Delete
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

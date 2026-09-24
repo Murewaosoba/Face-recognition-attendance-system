@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <title>Attendance Management System</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="sidebar">
+                <h2>Attendance System</h2>
+                
+                    <a href="{{ url_for('main') }}">Dashboard</a>
+                    <a href="{{ url_for('employees') }}">Employees</a>
+                    <a href="{{ url_for('attendance') }}">Attendance</a>
+                    <a href="{{ url_for('clock_attendance') }}">Clock Attendance</a>
+                    <a href="#">Reports</a>
+            </div>
+            <div class="main-content">
+                <h1>ATTENDANCE MANAGEMENT SYSTEM</h1>
+                <h2>DASHBOARD</h2>
+                <p>
+                    Employee records
+                </p>
+
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3>Total Employees</h3>
+                        <p>{{ employees | length }}</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Present Today</h3>
+                        <p>21</p> 
+                    </div>
+                    <div class="stat-card">
+                        <h3>Absent Today</h3>
+                        <p>4</p>
+                    </div> 
+                    <div class="stat-card">
+                        <h3>Late Today</h3>
+                        <p>2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

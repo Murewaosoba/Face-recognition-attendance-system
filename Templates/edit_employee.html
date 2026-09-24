@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Employee</title>
+</head>
+
+<body>
+
+    <form class="edit-form" method="POST">
+
+    <form method="POST">
+
+        <input type="text" name="employee_id" value="{{ employee[0] }}">
+
+        <input type="text" name="name" value="{{ employee[1] }}">
+
+        <input type="text" name="department" value="{{ employee[2] }}">
+
+        <button type="submit">Save Changes</button>
+
+    </form>
+
+</body>
+</html>
